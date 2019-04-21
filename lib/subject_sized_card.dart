@@ -6,8 +6,6 @@ class SubjectSizedCard extends StatefulWidget {
 
   SubjectSizedCard(this._subject) : super(key : ValueKey(_subject.key));
 
-  Subject get subject => _subject;
-
   @override
   _SubjectSizedCardState createState() => _SubjectSizedCardState(_subject);
 }
@@ -25,18 +23,27 @@ class _SubjectSizedCardState extends State<SubjectSizedCard> {
       child: Card(
         child: Column(
           children: <Widget>[
-            SizedBox(
-                width: double.infinity,
-                height: 100,
-                child: FlatButton.icon(
-                  color: Color(_subject.color),
-                  textColor: Colors.white,
-                  icon: Icon(Icons.subject, size: 30.0,),
-                  label: Text(_subject.name,),
-                  onPressed: () {
-
-                  },
-                )
+            GestureDetector(
+              onTap: () {
+                print('tab $_subject');
+              },
+              child: SizedBox(
+                  width: double.infinity,
+                  height: 100,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        color: _subject.color
+                    ),
+                    child: Row(
+                      children: <Widget>[
+//                        Icon(Icons.subject, size: 30.0, color: Colors.white,),
+//                        Text(_subject.name,style: TextStyle(color: Colors.white),)
+                        Icon(Icons.subject, size: 30.0, color: _subject.textColor),
+                        Text(_subject.name,style: TextStyle(color: _subject.textColor),)
+                      ],
+                    ),
+                  )
+              ),
             ),
             Padding(padding: EdgeInsets.all(5.0)),
             Row(
