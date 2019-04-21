@@ -74,9 +74,23 @@ class Subject {
     return _history.last.ago(clock);
   }
 
-  int get color => _color;
+  Color get color => Color(_color);
+
+  Color get textColor {
+    Color color = this.color;
+    if (color.red * 0.299 + color.green * 0.587 + color.blue * 0.114 > 186) {
+      return Colors.black;
+    } else {
+      return Colors.white;
+    }
+  }
 
   String get name => _name;
 
   int get key => _key;
+
+  @override
+  String toString() {
+    return 'Subject{_key: $_key, _name: $_name, _color: $_color, _history: $_history, pos: $pos}';
+  }
 }
