@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:repetition_cycle/Colors.dart';
+import 'package:repetition_cycle/colors.dart';
 import 'package:repetition_cycle/root_page.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
